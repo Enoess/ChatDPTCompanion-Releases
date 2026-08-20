@@ -328,6 +328,12 @@ section {
   box-shadow: var(--shadow);
 }
 
+.screenshot-card img {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid var(--border);
+}
+
 .screenshot-placeholder {
   aspect-ratio: 16 / 9;
   background: var(--bg-secondary);
