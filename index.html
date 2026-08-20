@@ -19,7 +19,6 @@
       <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">&#9776;</button>
       <ul class="navbar-links" id="navbar-links">
         <li><a href="#features" data-fr>Fonctionnalités</a><a href="#features" data-en>Features</a></li>
-        <li><a href="#screenshots">Screenshots</a></li>
         <li><a href="#how-it-works" data-fr>Comment ça marche</a><a href="#how-it-works" data-en>How it works</a></li>
         <li><a href="#download" data-fr>Télécharger</a><a href="#download" data-en>Download</a></li>
         <li><button class="lang-toggle" id="lang-toggle">EN</button></li>
@@ -100,31 +99,15 @@
           <p data-en>No game file modification. Read-only log parsing. Zero ban risk.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Screenshots -->
-  <section id="screenshots">
-    <div class="section-inner">
-      <h2 class="section-title">Screenshots</h2>
-      <p class="section-subtitle" data-fr>Découvrez l'interface en action.</p>
-      <p class="section-subtitle" data-en>See the interface in action.</p>
-
-      <div class="screenshots-grid">
-        <div class="screenshot-card">
-          <div class="screenshot-placeholder" data-fr>Ajoutez votre screenshot ici</div>
-          <div class="screenshot-placeholder" data-en>Add your screenshot here</div>
-          <div class="caption" data-fr>Overlay en combat — DPT et classement des joueurs</div>
-          <div class="caption" data-en>In-combat overlay — DPT and player ranking</div>
-        </div>
-
-        <div class="screenshot-card">
+      <div class="screenshots-grid" style="margin-top:3rem;">
+        <div class="screenshot-card" onclick="openLightbox(this)">
           <img src="assets/dmgdetails.png" alt="Element damage breakdown">
           <div class="caption" data-fr>Détail des dégâts par élément</div>
           <div class="caption" data-en>Element damage breakdown</div>
         </div>
 
-        <div class="screenshot-card">
+        <div class="screenshot-card" onclick="openLightbox(this)">
           <img src="assets/configpanel.png" alt="Configuration window">
           <div class="caption" data-fr>Fenêtre de configuration</div>
           <div class="caption" data-en>Configuration window</div>
@@ -132,6 +115,11 @@
       </div>
     </div>
   </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img src="" alt="Screenshot" id="lightbox-img">
+  </div>
 
   <!-- How It Works -->
   <section id="how-it-works">

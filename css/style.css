@@ -321,27 +321,20 @@ section {
   border-radius: var(--radius);
   overflow: hidden;
   transition: all var(--transition);
+  cursor: pointer;
 }
 
 .screenshot-card:hover {
   border-color: var(--cyan-dim);
   box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 
 .screenshot-card img {
   width: 100%;
-  display: block;
-  border-bottom: 1px solid var(--border);
-}
-
-.screenshot-placeholder {
   aspect-ratio: 16 / 9;
-  background: var(--bg-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  object-fit: cover;
+  display: block;
   border-bottom: 1px solid var(--border);
 }
 
@@ -349,6 +342,30 @@ section {
   padding: 1rem 1.2rem;
   font-size: 0.9rem;
   color: var(--text-secondary);
+}
+
+/* --- Lightbox --- */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: var(--radius);
+  box-shadow: 0 0 60px rgba(0, 212, 255, 0.15);
 }
 
 /* --- How It Works --- */

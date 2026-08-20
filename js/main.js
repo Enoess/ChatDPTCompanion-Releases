@@ -73,4 +73,28 @@
       link.addEventListener('click', closeMobileMenu);
     });
   });
+
+  // --- Lightbox ---
+  window.openLightbox = function (card) {
+    var img = card.querySelector('img');
+    if (!img) return;
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeLightbox = function () {
+    var lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      window.closeLightbox();
+    }
+  });
 })();
