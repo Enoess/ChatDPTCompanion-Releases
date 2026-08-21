@@ -212,7 +212,12 @@ img {
   margin-bottom: 2rem;
 }
 
-.hero-actions {
+.hero-actions-fixed {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
   display: flex;
   gap: 1rem;
   justify-content: center;
