@@ -150,7 +150,9 @@ img {
   justify-content: center;
   padding: 8rem 1.5rem 4rem;
   text-align: center;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 0;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -274,6 +276,8 @@ section {
 /* --- Features --- */
 #features {
   background: var(--bg-secondary);
+  position: relative;
+  z-index: 1;
 }
 
 .features-grid {
@@ -379,6 +383,8 @@ section {
 /* --- How It Works --- */
 #how-it-works {
   background: var(--bg-secondary);
+  position: relative;
+  z-index: 1;
 }
 
 .steps {
@@ -425,6 +431,8 @@ section {
 #download {
   background: var(--bg-primary);
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .download-box {
