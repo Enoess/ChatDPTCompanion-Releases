@@ -142,24 +142,17 @@ img {
 }
 
 /* --- Hero --- */
-.hero {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8rem 1.5rem 4rem;
-  text-align: center;
+.hero-bg {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   z-index: -2;
-  overflow: hidden;
-  box-sizing: border-box;
+  background: var(--bg-primary);
 }
 
-.hero::before {
+.hero-bg::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -169,6 +162,20 @@ img {
   height: 800px;
   background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
   pointer-events: none;
+}
+
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 1.5rem 4rem;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hero-content {
