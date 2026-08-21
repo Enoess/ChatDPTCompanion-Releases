@@ -145,10 +145,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 1.5rem 4rem;
+  padding: 8rem 1.5rem 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hero::before {
