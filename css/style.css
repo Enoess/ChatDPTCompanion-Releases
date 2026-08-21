@@ -172,18 +172,10 @@ img {
   justify-content: center;
   padding: 8rem 1.5rem 4rem;
   text-align: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 0;
   overflow: hidden;
   box-sizing: border-box;
-  pointer-events: none;
-}
-
-.hero-content {
-  pointer-events: auto;
 }
 
 .hero-content {
