@@ -214,7 +214,7 @@ img {
 
 .hero-actions-fixed {
   position: fixed;
-  top: 60%;
+  top: 68%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 0;
