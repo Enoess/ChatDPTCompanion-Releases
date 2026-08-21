@@ -141,7 +141,11 @@ img {
 
 /* --- Hero --- */
 .hero {
-  padding: 10rem 1.5rem 5rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
