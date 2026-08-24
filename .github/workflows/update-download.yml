@@ -25,7 +25,6 @@ jobs:
         run: |
           TAG="${{ steps.version.outputs.tag }}"
           VERSION="${{ steps.version.outputs.version }}"
-
           sed -i "s|releases/download/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/ChatDPTCompanion-[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-Setup\.exe|releases/download/${TAG}/ChatDPTCompanion-${VERSION}-Setup.exe|g" index.html
           sed -i "s/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/v${VERSION}/g" index.html
 
