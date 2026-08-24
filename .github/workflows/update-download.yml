@@ -1,0 +1,45 @@
+name: Update download link
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  update-link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: version
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          VERSION="${TAG#v}"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update download links in index.html
+        run: |
+          TAG="${{ steps.version.outputs.tag }}"
+          VERSION="${{ steps.version.outputs.version }}"
+
+          OLD_URL_PATTERN="releases/download/v[0-9]*\.[0-9]*\.[0-9]*/ChatDPTCompanion-[0-9]*\.[0-9]*\.[0-9]*-Setup\.exe"
+          NEW_URL="releases/download/${TAG}/ChatDPTCompanion-${VERSION}-Setup.exe"
+
+          OLD_VERSION_TEXT="v[0-9]*\.[0-9]*\.[0-9]*"
+          NEW_VERSION_TEXT="v${VERSION}"
+
+          sed -i "s|${OLD_URL_PATTERN}|${NEW_URL}|g" index.html
+          sed -i "s/Télécharger ${OLD_VERSION_TEXT}/Télécharger ${NEW_VERSION_TEXT}/g" index.html
+          sed -i "s/Download ${OLD_VERSION_TEXT}/Download ${NEW_VERSION_TEXT}/g" index.html
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Update download link to v${{ steps.version.outputs.version }}" || exit 0
+          git push
