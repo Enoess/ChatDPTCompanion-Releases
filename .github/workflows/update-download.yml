@@ -26,13 +26,13 @@ jobs:
           TAG="${{ steps.version.outputs.tag }}"
           VERSION="${{ steps.version.outputs.version }}"
 
-          # Replace download URLs
           sed -i "s|releases/download/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/ChatDPTCompanion-[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-Setup\.exe|releases/download/${TAG}/ChatDPTCompanion-${VERSION}-Setup.exe|g" index.html
-
-          # Replace version numbers in button text
           sed -i "s/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/v${VERSION}/g" index.html
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.nore
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Update download link to v${{ steps.version.outputs.version }}" || exit 0
+          git push
