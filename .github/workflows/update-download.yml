@@ -25,8 +25,8 @@ jobs:
         run: |
           TAG="${{ steps.version.outputs.tag }}"
           VERSION="${{ steps.version.outputs.version }}"
-          perl -CSD -i "s|releases/download/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/ChatDPTCompanion-[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-Setup\.exe|releases/download/${TAG}/ChatDPTCompanion-${VERSION}-Setup.exe|g" index.html
-          perl -CSD -i "s/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/v${VERSION}/g" index.html
+          perl -CSD -i -pe "s|releases/download/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/ChatDPTCompanion-[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-Setup\.exe|releases/download/${TAG}/ChatDPTCompanion-${VERSION}-Setup.exe|g" index.html
+          perl -CSD -i -pe "s/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/v${VERSION}/g" index.html
 
       - name: Commit and push
         run: |
