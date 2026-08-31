@@ -5,11 +5,15 @@
 (function () {
   'use strict';
 
-  // --- Language Toggle ---
-  const LANG_KEY = 'chatdpt-lang';
+  var LANGS = ['fr', 'en', 'es', 'pt'];
+  var LANG_LABELS = { fr: 'FR', en: 'EN', es: 'ES', pt: 'PT' };
+  var LANG_NEXT = { fr: 'en', en: 'es', es: 'pt', pt: 'fr' };
+  var LANG_KEY = 'chatdpt-lang';
 
   function getLang() {
-    return localStorage.getItem(LANG_KEY) || 'fr';
+    var stored = localStorage.getItem(LANG_KEY);
+    if (stored && LANGS.indexOf(stored) !== -1) return stored;
+    return 'fr';
   }
 
   function setLang(lang) {
@@ -20,22 +24,23 @@
   function applyLang(lang) {
     document.documentElement.setAttribute('lang', lang);
 
-    document.querySelectorAll('[data-fr]').forEach(function (el) {
-      el.style.display = lang === 'fr' ? '' : 'none';
-    });
-    document.querySelectorAll('[data-en]').forEach(function (el) {
-      el.style.display = lang === 'en' ? '' : 'none';
+    LANGS.forEach(function (l) {
+      document.querySelectorAll('[data-' + l + ']').forEach(function (el) {
+        el.style.display = l === lang ? '' : 'none';
+      });
     });
 
     var btn = document.getElementById('lang-toggle');
     if (btn) {
-      btn.textContent = lang === 'fr' ? 'EN' : 'FR';
-      btn.title = lang === 'fr' ? 'Switch to English' : 'Passer en français';
+      var next = LANG_NEXT[lang];
+      btn.textContent = LANG_LABELS[next];
+      btn.title = LANG_LABELS[next];
     }
   }
 
   function toggleLang() {
-    setLang(getLang() === 'fr' ? 'en' : 'fr');
+    var current = getLang();
+    setLang(LANG_NEXT[current]);
   }
 
   // --- Mobile Menu ---
@@ -46,7 +51,6 @@
     }
   }
 
-  // --- Close mobile menu on link click ---
   function closeMobileMenu() {
     var links = document.getElementById('navbar-links');
     if (links) {
